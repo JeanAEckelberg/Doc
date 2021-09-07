@@ -35,7 +35,8 @@ def search(query):
         #Get unique video id from link
         video_id = query.split('=')[1]
         
-        videos.append({"title": "Direct Url Request",
+        videos.append({
+                "title": "Direct Url Request",
                 "id": video_id,
                 "uploader": "Direct Url Request",
                 "description": "Direct Url Request",
@@ -58,6 +59,7 @@ def search(query):
         for search_result in search_response.get("items", []):
             if search_result["id"]["kind"] == "youtube#video":
                 videos.append({
+                    "query": query.upper(),
                     "title": search_result["snippet"]["title"],
                     "id": search_result["id"]["videoId"],
                     "uploader": search_result["snippet"]["channelTitle"],
@@ -68,7 +70,7 @@ def search(query):
 
                 })
 
-    return videos, query
+    return videos
 
 
 def search_related_videos(video_id):
