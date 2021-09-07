@@ -13,7 +13,7 @@ def search(client, req):
 
     yt_response = yt.search(req["details"]["query"])
 
-    client.sendTarget(req["id"], {"key":"get.search", "payload": yt_response})
+    client.sendTarget(req["id"]["query"], {"key":"get.search", "payload": yt_response})
 
     return True
 
@@ -41,6 +41,7 @@ def add_queue(client, req):
 
     params = [
         "id"
+        "query"
     ]
 
     if not valid_params(params, req, client):
@@ -54,7 +55,7 @@ def add_queue(client, req):
             return False
 
     # get full video details
-    video = yt.get_video(req["details"]["id"])
+    video = yt.get_video(req["details"]["id"]["query"])
 
     if not video:
         pass # TODO implement exception
