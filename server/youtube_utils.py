@@ -27,7 +27,7 @@ def search(query):
     for item in data:
         if query.upper() == item['query']:
             saved_video = True;
-            item['query'] = "NOTHING"
+            item['query'] = ""
             videos.append(item)
     
     
@@ -37,7 +37,7 @@ def search(query):
         video_id = query.split('=')[1]
         
         videos.append({
-                "query": "NOTHING",
+                "query": "",
                 "title": "Direct Url Request",
                 "id": video_id,
                 "uploader": "Direct Url Request",
@@ -140,7 +140,7 @@ def get_video(yt_id, query):
     }
     
     #TODO: Implement save video to json here
-    if video['query'] != "NOTHING":
+    if video['query'] != "":
         with open(query[0].upper()+'.json', 'w+') as data_file:
             json.dump(video)
     #print(video)
