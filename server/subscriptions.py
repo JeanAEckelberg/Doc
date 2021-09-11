@@ -11,9 +11,9 @@ def search(client, req):
     if not valid_params(params, req, client):
         return False
 
-    yt_response = yt.search(req["details"]["query"])
+    yt_response = yt.search(req["details"])
 
-    client.sendTarget(req["id"]["query"], {"key":"get.search", "payload": yt_response})
+    client.sendTarget(req["id"], req["query"], {"key":"get.search", "payload": yt_response})
 
     return True
 
