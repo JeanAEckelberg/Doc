@@ -44,7 +44,7 @@ def search(query):
                 "description": "Direct Url Request",
                 "thumbnail": "https://static.wikia.nocookie.net/pokemon/images/d/d6/Jessie_Mimikyu.png/revision/latest?cb=20170915045921",
                 "url": query,
-                "autoplay_url": query + "?autoplay=1"})
+                "autoplay_url": query + "?autoplay=1"
         })
     
     elif saved_video == True:
@@ -128,7 +128,7 @@ def get_video(yt_id, query):
         return None
 
     video = {
-        "query": query.upper()
+        "query": query.upper(),
         "title": response["snippet"]["title"],
         "id": response["id"],
         "uploader": response["snippet"]["channelTitle"],
