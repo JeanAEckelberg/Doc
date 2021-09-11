@@ -55,7 +55,7 @@ def add_queue(client, req):
             return False
 
     # get full video details
-    video = yt.get_video(req["details"]["id"]["query"])
+    video = yt.get_video(req["details"]["id"], req["details"]["query"])
 
     if not video:
         pass # TODO implement exception
