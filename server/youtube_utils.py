@@ -36,6 +36,7 @@ def search(query):
         video_id = query.split('=')[1]
         
         videos.append({
+                "query": "NOTHING"
                 "title": "Direct Url Request",
                 "id": video_id,
                 "uploader": "Direct Url Request",
