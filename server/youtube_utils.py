@@ -20,15 +20,18 @@ def search(query):
     saved_video = False;
     
     # Get related json file
-    with open(query[0].upper()+'.json', 'r') as read_file:
-        data = json.load(read_file)
+    try:
+        with open(query[0].upper()+'.json', 'r') as read_file:
+            data = json.load(read_file)
         
-    # Chack query against data
-    for item in data:
-        if query.upper() == item['query']:
-            saved_video = True;
-            item['query'] = ""
-            videos.append(item)
+        # Check query against data
+        for item in data:
+            if query.upper() == item['query']:
+                saved_video = True;
+                item['query'] = ""
+                videos.append(item)
+    except JSONDecodeError:
+        pass
     
     
     # Check to see if the query passed is a direct link
@@ -145,7 +148,7 @@ def get_video(yt_id, query):
             json.dump(video)
     #print(video)
     else:
-        Pass
+        pass
     return video
 
 
